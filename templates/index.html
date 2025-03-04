@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>{{ title }}</title>
+  </head>
+  <body class="introduction">
+    <center>
+      <h1>Spotify Wrapped Anytime</h1>
+      <h2>Top Track Generator</h2>
+
+      <button class="spotifyButton" onclick="location.href = '/login';">
+        Log in with spotify
+      </button>
+    </center>
+  </body>
+</html>

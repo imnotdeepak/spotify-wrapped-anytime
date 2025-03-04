@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>{{ title }}</title>
+  </head>
+
+  <body>
+    {% from "listContainer.html" import listContainer with context %}
+
+    <script>
+      var activeList;
+
+      function showContent(id) {
+        // set all of the other ones to invisible
+        for (
+          let i = 0;
+          i < document.querySelectorAll(".listContainer").length;
+          i++
+        ) {
+          document.querySelectorAll(".listContainer")[i].style.display = "none";
+        }
+        document.getElementById(id).style.display = "inline-block";
+        document.getElementById("downloadPicButton").style.display =
+          "inline-block";
+        activeList = id;
+      }
+
+      function hiddenClone(element) {
+        // Create clone of element
+        var clone = element.cloneNode(true);
+
+        // Position element relatively within the
+        // body but still out of the viewport
+        var style = clone.style;
+        style.position = "relative";
+        style.top = window.innerHeight + "px";
+        style.left = 0;
+        // Append clone to body and return the clone
+        document.body.appendChild(clone);
+        return clone;
+      }
+
+      $(document).ready(function () {
+        // Global variable
+        var element = $(".listContainerWrapper");
+
+        // Global variable
+        var getCanvas;
+
+        $("#downloadPicButton").on("click", function () {
+          var offScreen = document.querySelector(".listContainerWrapper");
+          window.scrollTo(0, 0);
+          var clone = hiddenClone(offScreen);
+          // Use clone with htm2canvas and delete clone
+          html2canvas(clone, { scrollY: -window.scrollY }).then((canvas) => {
+            var dataURL = canvas.toDataURL("image/png", 1.0);
+            document.body.removeChild(clone);
+            var link = document.createElement("a");
+            link.href = dataURL;
+            link.download = `${activeList}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          });
+        });
+      });
+    </script>
+
+    <div>
+      <center>
+        <h1>Spotify Wrapped Anytime</h1>
+        <h2>Top Track Generator</h2>
+      </center>
+    </div>
+
+    <div style="width: 100%; height: auto" class="buttons">
+      <center>
+        <div>
+          <button
+            onclick="showContent('short_term_list')"
+            class="generatePicButton"
+          >
+            Short Term
+          </button>
+          <button
+            onclick="showContent('medium_term_list')"
+            class="generatePicButton"
+          >
+            Medium Term
+          </button>
+          <button
+            onclick="showContent('long_term_list')"
+            class="generatePicButton"
+          >
+            Long Term
+          </button>
+        </div>
+      </center>
+    </div>
+
+    <div style="width: 100%; height: auto" class="listContainerWrapper">
+      <center>
+        {{ listContainer(user_display_name, short_term['items'],
+        'short_term_list', 'LAST MONTH') }} {{ listContainer(user_display_name,
+        medium_term['items'], 'medium_term_list', 'LAST 6 MONTHS') }} {{
+        listContainer(user_display_name, long_term['items'], 'long_term_list',
+        'ALL TIME') }}
+      </center>
+    </div>
+
+    <center>
+      <button class="generatePicButton" id="downloadPicButton">Download</button>
+    </center>
+  </body>
+</html>

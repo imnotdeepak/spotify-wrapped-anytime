@@ -1,0 +1,69 @@
+{% macro listContainer(display_name, songs, id, duration) -%}
+<div class="listContainer" id="{{ id }}">
+  <div class="intro">
+    <h2 class="logo">{{ duration }}</h2>
+    <p class="date">username: {{ display_name }}</p>
+    <p class="date">{{currentTime|strftime}}</p>
+  </div>
+
+  <!-- New two-column layout for tracks -->
+  <div class="tracks-container">
+    <!-- First column (tracks 1-5) -->
+    <div class="tracks-column">
+      {% for song in songs[:5] %}
+      <div class="track-item">
+        <div class="track-number">{{ loop.index }}</div>
+        <div class="album-cover">
+          <img
+            src="{{ song.album.images[1].url }}"
+            alt="{{ song.album.name }}"
+          />
+        </div>
+        <div class="track-info">
+          <div class="track-name">{{ song.name }}</div>
+          <div class="track-artist">{{ song.artists[0].name }}</div>
+        </div>
+        <div class="track-duration">{{ song.duration_ms | mmss }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Second column (tracks 6-10) -->
+    <div class="tracks-column">
+      {% for song in songs[5:10] %}
+      <div class="track-item">
+        <div class="track-number">{{ loop.index + 5 }}</div>
+        <div class="album-cover">
+          <img
+            src="{{ song.album.images[1].url }}"
+            alt="{{ song.album.name }}"
+          />
+        </div>
+        <div class="track-info">
+          <div class="track-name">{{ song.name }}</div>
+          <div class="track-artist">{{ song.artists[0].name }}</div>
+        </div>
+        <div class="track-duration">{{ song.duration_ms | mmss }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Totals section -->
+  <div class="list-totals">
+    <div class="total-line">
+      <span class="total-label">song count:</span>
+      <span class="total-value">{{ songs | length }}</span>
+    </div>
+    <div class="total-line">
+      <span class="total-label">total time:</span>
+      <span class="total-value"
+        >{{ (songs | sum(attribute='duration_ms')) | mmss }}</span
+      >
+    </div>
+  </div>
+  <div class="thanks">
+    <p>you music taste stinks!</p>
+  </div>
+</div>
+{%- endmacro %}

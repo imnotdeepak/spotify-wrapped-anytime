@@ -1,0 +1,340 @@
+/* Global Styles */
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-ExtraboldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-Extrabold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-RegularItalic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix Ultra";
+  src: url("SpotifyMix-UltraItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix";
+  src: url("SpotifyMix-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spotify Mix Ultra";
+  src: url("SpotifyMix-Ultra.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Spotify Mix", sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #ffffff;
+  background-color: #121212;
+}
+
+.logo {
+  font-family: "Spotify Mix", sans-serif;
+  font-weight: 900; /* Using Black weight for the logo */
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.spotifyButton {
+  font-family: "Spotify Mix", sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 1rem;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 25px;
+  background-color: #1ed760;
+  cursor: pointer;
+  border-radius: 30px;
+  color: #121212;
+  font-family: "Spotify Mix", sans-serif;
+  margin: 20px 10px;
+  width: auto;
+  letter-spacing: 0.5px;
+}
+
+.track-item:first-child {
+  padding-top: 0; /* Remove extra padding on the first item */
+}
+
+.track-item:nth-child(6) {
+  padding-top: 0; /* Remove extra padding on the sixth item */
+}
+
+.intro {
+  padding-left: 16px;
+}
+
+.tracks-container {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column */
+  gap: 10px; /* Reduced gap to maintain consistency */
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px auto; /* Centers the container */
+  max-width: 600px; /* Keeps it from stretching too much */
+  box-sizing: border-box;
+  text-align: center; /* Centers text */
+  height: 700px; /* Increased height for the container */
+  overflow: hidden; /* Hide the scroll bar */
+}
+
+/* Ensure the tracks columns are sized properly */
+.tracks-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensure column takes full width */
+}
+
+/* Improved track item layout */
+.track-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 5px;
+  border-bottom: 1px solid #333;
+  width: 100%; /* Ensure items take full width */
+  box-sizing: border-box;
+  height: 100%; /* Fixed height for each track item */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Fixed track number width */
+.track-number {
+  font-family: "Spotify Mix", sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 1rem;
+  width: 25px;
+  text-align: center;
+  flex-shrink: 0; /* Prevent number from shrinking */
+}
+
+.album-cover {
+  margin: 0 8px;
+  flex-shrink: 0; /* Prevent from shrinking */
+}
+
+.album-cover img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+/* Track info */
+.track-info {
+  flex-grow: 1;
+  min-width: 0;
+  word-wrap: break-word;
+  height: auto;
+  padding-right: 5px;
+}
+
+.track-name,
+.track-artist {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.track-duration {
+  font-family: "Spotify Mix", sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  min-width: 50px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.list-totals {
+  margin-top: 15px;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+  font-family: "Spotify Mix", sans-serif;
+}
+
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 3px 0;
+}
+
+.total-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.total-value {
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+/* Footer */
+.thanks {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.thanks p {
+  font-family: "Spotify Mix", sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+/* Download button styling */
+.generatePicButton {
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 25px;
+  background-color: #1ed760;
+  font-size: 1rem;
+  font-weight: 500; /* Medium */
+  cursor: pointer;
+  border-radius: 30px;
+  color: #ffffff;
+  font-family: "Spotify Mix", sans-serif;
+  margin: 20px 10px;
+  width: auto;
+  letter-spacing: 0.5px;
+}
+
+.generatePicButton:hover {
+  background-color: #1db954;
+  transform: scale(1.03);
+  transition: all 0.2s;
+}
+
+.listContainer {
+  padding: 20px;
+  background-color: #121212;
+  border-radius: 10px;
+  border: 2px solid #1db954;
+}
+
+#short_term_list {
+  display: none;
+}
+
+#downloadPicButton {
+  display: none;
+}
+
+#medium_term_list {
+  display: none;
+}
+
+#long_term_list {
+  display: none;
+}
